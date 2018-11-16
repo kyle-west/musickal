@@ -3,7 +3,7 @@ import random
 
 m = Musickal()
 
-MEASURE_LENGTH = 2
+MEASURE_LENGTH = 4
 TIMES = [ .5, 1.0, 1.5, 2.0 ]
 TIMES_length = len(TIMES)
 print("TIMES: ({}, {})".format(0, TIMES_length), TIMES)
@@ -13,30 +13,25 @@ CMS_length = len(CMS)
 print("CMS: ({}, {})".format(0, CMS_length), CMS)
 
 
-song = []
 
-def selectNote (c, t, scaleNotes = CMS):
-  note = (scaleNotes[c], t)
-  return note
+def selectNote (c, t):
+  return (CMS[c], t)
 
-def sample (i, minVal, maxVal, jump = 1, entropy = 100, sustainable = False):
-  if ((random.random() * entropy) > entropy/(len(song) + 1)):
-    direction = (-1)**(int(random.random() * entropy))
-    x = i + direction*jump
-    if x > maxVal or x < minVal: 
-      x = i - direction*jump
-    return x
-  else :
-    return i
+def sample (i, minVal, maxVal, jump = 1, entropy = 100):
+  direction = (-1)**(int(random.random() * entropy))
+  x = i + direction*jump
+  if x > maxVal or x < minVal: 
+    x = i - direction*jump
+  return x
 
 def sampleMeasureTimes(length, slots):
-  t = length/4
+  t = length / slots
   return [t,t,t,t]
 
 def createMeasure ():
   measure = []
-  c , t = int(random.random() * CMS_length), int(random.random() * TIMES_length) 
-  jump_c = int(random.random() * 8)
+  c = int(random.random() * CMS_length)
+  jump_c = int(random.random() * 5 + 1)
   for t in sampleMeasureTimes(MEASURE_LENGTH, 4):
     c = sample(c, 0, CMS_length - 1, jump_c)
     measure.append(selectNote(c, t))
@@ -46,7 +41,8 @@ def createMeasure ():
 
 
 print("----------------------------------------------------------------------")
-for i in range(0, 12):
+song = []
+for i in range(0, 24):
   song += createMeasure()
 
 
