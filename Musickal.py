@@ -83,6 +83,17 @@ Db8, Eb8, Gb8, Ab8, Bb8 = __half_notes*16.0
 ## ---------------------------- SCALES ----------------------------- ##
 
 SCALES = {
+  "B-Major": [
+    B0, Db0, Eb0, E0, Gb0, Ab1, Bb1,
+    B1, Db1, Eb1, E1, Gb1, Ab2, Bb2,
+    B2, Db2, Eb2, E2, Gb2, Ab3, Bb3,
+    B3, Db3, Eb3, E3, Gb3, Ab4, Bb4,
+    B4, Db4, Eb4, E4, Gb4, Ab5, Bb5,
+    B5, Db5, Eb5, E5, Gb5, Ab6, Bb6,
+    B6, Db6, Eb6, E6, Gb6, Ab7, Bb7,
+    B7, Db7, Eb7, E7, Gb7, Ab8, Bb8,
+    B8, Db8, Eb8, E8, Gb8
+  ],
   "C-Major": [
     C0, D0, E0, F0, G0, A0, B0,
     C1, D1, E1, F1, G1, A1, B1,

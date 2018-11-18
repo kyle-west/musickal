@@ -8,12 +8,12 @@ TIMES = [ .5, 1.0, 1.5, 2.0 ]
 TIMES_length = len(TIMES)
 print("TIMES: ({}, {})".format(0, TIMES_length), TIMES)
 
-CMS = SCALES["C-Major"][slice(20, -20)]
-CMS_length = len(CMS)
-print("CMS: ({}, {})".format(0, CMS_length), CMS)
+SCALE = SCALES["C-Major"][slice(20, -20)]
+SCALE_length = len(SCALE)
+print("SCALE: ({}, {})".format(0, SCALE_length), SCALE)
 
 def selectNote (c, t):
-  return (CMS[c], t)
+  return (SCALE[c], t)
 
 def sample (i, minVal, maxVal, jump = 1, entropy = 100):
   direction = (-1)**(int(random.random() * entropy))
@@ -37,10 +37,10 @@ def sampleMeasureTimes(length, slots):
 
 def createMeasure (times):
   measure = []
-  c = int(random.random() * CMS_length)
+  c = int(random.random() * SCALE_length)
   jump_c = int(random.random() * 5 + 1)
   for t in times:
-    c = sample(c, 0, CMS_length - 1, jump_c)
+    c = sample(c, 0, SCALE_length - 1, jump_c)
     measure.append(selectNote(c, t))
   print(measure)
   return measure
